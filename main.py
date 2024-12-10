@@ -41,85 +41,86 @@ content = json.load(f)
 print(json.dumps(content, indent=4, ensure_ascii=False))
 # Создание index.html
 html_content = """ 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacker News</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        header {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        main {
-            padding: 20px;
-        }
-        table {
-            border-collapse: collapse;
-            width: 90%;
-            margin: 20px auto;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-            transition: background-color 0.3s;
-        }
-        a {
-            color: #ff6347; /* Цвет текста ссылки */
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Hacker News</h1>
-    </header>
-    <main>
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Amount of Comments</th>
-                <th>№</th>
-            </tr>
-
-"""
-for i, item in enumerate(content, 1):
-    html_content += f"<tr><td>{item['Title']}</td><td>{item['Comments']}</td><td>{i}</td></tr>\n"
-html_content += """
-        </table>
-        <p style="text-align: center;"><a href="https://news.ycombinator.com/">Источник данных</a></p>
-    </main>
-</body>
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Hacker News</title> 
+    <style> 
+        body { 
+            background: linear-gradient(45deg, #1e90ff, #ff6347); 
+            font-family: 'Arial', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: #ffffff; 
+        } 
+        header { 
+            background-color: #333; 
+            color: #fff; 
+            padding: 15px 0; 
+            text-align: center; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+        } 
+        main { 
+            padding: 20px; 
+        } 
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin: 20px 0; 
+            background-color: #444; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            border-radius: 8px; 
+            overflow: hidden; 
+        } 
+        th, td { 
+            border: 1px solid #555; 
+            padding: 10px; 
+            text-align: left; 
+            color: #fff; 
+        } 
+        th { 
+            background-color: #555; 
+        } 
+        tr:nth-child(even) { 
+            background-color: #666; 
+        } 
+        tr:hover { 
+            background-color: #888; 
+            transition: background-color 0.3s; 
+        } 
+        a { 
+            color: #000000; 
+            text-decoration: none; 
+        } 
+        a:hover { 
+            text-decoration: underline; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <header> 
+        <h1>Hacker News</h1> 
+    </header> 
+    <main> 
+        <table> 
+            <tr> 
+                <th>Title</th> 
+                <th>Amount of Comments</th> 
+                <th>№</th> 
+            </tr> 
+            <!-- Here goes the generated table rows --> 
+""" 
+for i, item in enumerate(content, 1): 
+    html_content += f"<tr><td>{item['Title']}</td><td>{item['Comments']}</td><td>{i}</td></tr>\n" 
+html_content += """ 
+        </table> 
+        <p style="text-align: center;"><a href="https://news.ycombinator.com/">Источник данных</a></p> 
+    </main> 
+</body> 
 </html>
+
 """
 with open('index.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
